@@ -5,7 +5,7 @@
             <div class="texto text-center">
                 <h2>{{titulo}}</h2>
                 <p>{{subtitulo}}</p>
-                <button class="boton-hero">{{boton}}</button>
+             <router-link to="/login" ><button class="boton-hero">{{boton}}</button></router-link>   
             </div>
         </div>
     </div>
