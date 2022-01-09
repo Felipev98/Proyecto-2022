@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
-
-createApp(App).use(store).use(router).mount('#app')
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+axios.defaults.baseURL = 'http://127.0.0.1:8000'
+createApp(App).use(store,VueAxios,axios).use(router).mount('#app')
+// createApp(App).use(VueAxios, axios).mount('#app')

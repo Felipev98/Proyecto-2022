@@ -8,14 +8,15 @@
                     <img src="../assets/inicio-sesion.svg" alt="">
                 </div>
                 <form class="input" @submit.prevent="submitForm">
-                    <input type="text" v-model="username" placeholder="Nombre de usuario o Email">
-                    <input type="password" v-model="password" class="password" placeholder="Contraseña">
-                         <div class="boton-login">
-                    <button type="submit" class="text-center">Iniciar Sesión</button>
+                    <input v-model="username" class="password" type="text" placeholder="Nombre de usuario">
+                    <input v-model="email" type="text" class="password" placeholder="Email">
+                    <input v-model="password" type="password" class="password" placeholder="Contraseña">
+                      <div class="boton-login">
+            <button type="submit">Registrarse</button>
                 </div>
                 </form>
-                <div class="registro-texto">
-                    <p>¿Aún no tienes cuenta? Registrate como <router-link class="links-registro" to="/">Desarrollador</router-link> o <router-link class="links-registro" to="/">Empresa</router-link></p>
+                <div class="registro-texto text-center">
+                    <p>¿Ya tienes una cuenta?<router-link class="links-registro" to="/">Iniciar Sesión</router-link></p>
                 </div>
             </div>
         </div>
@@ -29,28 +30,26 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            username: '',
-            password: ''
+            email:'',
+            password:'',
+            username:''
         }
     },
-     methods:{
+    methods:{
         submitForm(e){
             const data ={
                 username:this.username,
+                email:this.email,
                 password:this.password,
             }
-            axios.post('/api/v1/token/login',data)
+            axios.post('/api/v1/users/',data)
             .then(response =>{
-                // this.$router.push('/login')
-                const token = response.data.auth_token
-                this.$store.commit('setToken',token)
-                axios.defaults.headers.common['Authorization'] = 'Token '+token
-                localStorage.setItem('token',token)
+                this.$router.push('/login')
                 console.log(response)
-
 
             }).catch(error =>{
                 console.log(error)
+                console.log("SDOSKDOSKOD")
             })
         }
     }
@@ -64,10 +63,10 @@ background: linear-gradient(to bottom, #838EF3, #101B67);
 }
 .box{
     background: #CACEEE;
-    height: 28rem;
+    height: auto;
     width: 50%;
     margin: auto;
-    margin-top: 7rem;
+    margin-top: 5rem;
     padding: 1.9rem;
     border-radius: 1.9rem;
 }
