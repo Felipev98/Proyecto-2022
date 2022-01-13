@@ -41,13 +41,15 @@ export default {
             }
             axios.post('/api/v1/token/login',data)
             .then(response =>{
-                // this.$router.push('/login')
-                const token = response.data.auth_token
-                this.$store.commit('setToken',token)
-                axios.defaults.headers.common['Authorization'] = 'Token '+token
-                localStorage.setItem('token',token)
-                console.log(response)
-
+                const access = response.data.access
+                const refresh = response.data.refresh
+                this.$store.commit('setAccess',access)
+                this.$store.commit('setRefresh',refresh)
+                axios.defaults.headers.common['Authorization'] = 'JWT' + access
+                localStorage.setItem('access',access)
+                localStorage.setItem('refresh',refresh)
+                console.log(access)
+                this.$router.push('/feed')
 
             }).catch(error =>{
                 console.log(error)

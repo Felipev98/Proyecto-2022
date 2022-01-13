@@ -5,8 +5,6 @@
     <div class="row">
  <ProfileSection/>
     </div>
-   
-
 </div>
 </div>
 
@@ -14,13 +12,32 @@
 </template>
 
 <script>
+import axios from 'axios';
 import ProfileSection from '../components/ProfileSection.vue'
 export default {
-
+    data() {
+        return {
+            JobOffers:[]
+        }
+    },
     components:{
         ProfileSection
     },
-
+    mounted() {
+        this.getOffers();
+    },
+    methods: {
+     async getOffers(){
+      await axios
+      .get('/api/v1/JobOffer/')
+      .then(response =>{
+        this.JobOffers = response.data
+        console.log(this.JobOffers)
+      }).catch(error =>{
+        console.log(error)
+      })
+     }
+    },
 }
 </script>
 
