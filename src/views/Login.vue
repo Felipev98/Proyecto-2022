@@ -14,6 +14,9 @@
                     <button type="submit" class="text-center">Iniciar Sesión</button>
                 </div>
                 </form>
+                <div v-if="$store.state.Business">
+                    <router-link class="links-registro" to="/profileinfo/business">Perfil Empresa</router-link>
+                </div>
                 <div class="registro-texto">
                     <p>¿Aún no tienes cuenta? Registrate como <router-link class="links-registro" to="/">Desarrollador</router-link> o <router-link class="links-registro" to="/">Empresa</router-link></p>
                 </div>
@@ -49,8 +52,11 @@ export default {
                 localStorage.setItem('access',access)
                 localStorage.setItem('refresh',refresh)
                 console.log(access)
+                if(this.$store.state.Business){
+                    this.$router.push('/empresa')
+                }else{
                 this.$router.push('/feed')
-
+                }
             }).catch(error =>{
                 console.log(error)
             })

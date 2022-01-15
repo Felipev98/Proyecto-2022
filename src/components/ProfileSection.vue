@@ -1,5 +1,4 @@
 <template>
-<section >
   <div class="col-4 profile-feed">
       <div class="imagen-profile-feed"></div>
       <div class="foto-perfil">
@@ -11,7 +10,6 @@
         <BotonesPerfil contenidoBoton="Propuestas"/>
       </div>
       </div>
-</section>
     
 </template>
 
@@ -29,6 +27,8 @@ export default {
 .profile-feed{
     height:90vh;
     background: #ffff;
+    padding-left:0rem;
+    padding-right:0rem;
 }
 .imagen-profile-feed{
     background-image: url('../assets/banner.png');

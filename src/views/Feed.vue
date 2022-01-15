@@ -4,6 +4,7 @@
 <div class="box-feed">
     <div class="row">
  <ProfileSection/>
+ <Feed/>
     </div>
 </div>
 </div>
@@ -14,6 +15,7 @@
 <script>
 import axios from 'axios';
 import ProfileSection from '../components/ProfileSection.vue'
+import Feed from '../components/Feed.vue'
 export default {
     data() {
         return {
@@ -21,7 +23,7 @@ export default {
         }
     },
     components:{
-        ProfileSection
+        ProfileSection,Feed
     },
     mounted() {
         this.getOffers();

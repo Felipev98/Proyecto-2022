@@ -35,7 +35,7 @@ export default {
     },
      methods:{
          
-          UpdateProfile(e){
+      async    UpdateProfile(e){
         let axiosConfig = {
         headers: {
       'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ export default {
             }
             axios.post('/api/v1/Profile/',data,axiosConfig)
             .then(response =>{
-                console.log(response.data.url)
+                this.$router.push('/profileinfo/'+response.data.id)
             }).catch(error =>{
                 console.log(error)
             })

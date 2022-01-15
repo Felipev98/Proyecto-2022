@@ -12,7 +12,7 @@
                     <input v-model="email" type="text" class="password" placeholder="Email">
                     <input v-model="password" type="password" class="password" placeholder="Contraseña">
                       <div class="boton-login">
-            <button type="submit">Registrarse</button>
+                        <button type="submit">Registrarse</button>
                 </div>
                 </form>
                 <div class="registro-texto text-center">
@@ -32,9 +32,10 @@ export default {
         return {
             email:'',
             password:'',
-            username:''
+            username:'',
         }
     },
+
     methods:{
         submitForm(e){
             const data ={
@@ -45,12 +46,14 @@ export default {
             axios.post('/api/v1/users/',data)
             .then(response =>{
                 this.$router.push('/login')
+               this.$store.commit('setBusiness',true)
+            localStorage.setItem('Business','Business')
                 console.log(response)
 
             }).catch(error =>{
                 console.log(error)
             })
-        }
+        },
     }
 }
 </script>
