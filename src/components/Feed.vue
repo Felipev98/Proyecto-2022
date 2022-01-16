@@ -14,6 +14,8 @@
             </div>
             <div v-for="bootcamp in bootcamps" :key="bootcamp.id" class="card-joboffer">
                 <span>{{bootcamp.title}}</span>
+                <p>{{bootcamp.description}}</p>
+                <p>{{bootcamp.TechStack}}</p>
             </div>
         </div>
       </div>
@@ -72,7 +74,8 @@ export default {
 .card-joboffer{
     background-color: #ffff;
     border-radius: 1.1rem;
-    height: 9rem;
+    height: auto;
     margin-top: 1rem;
+    padding: 1rem;
 }
 </style>
