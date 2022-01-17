@@ -12,6 +12,7 @@
                     <span>Back-End</span>
                 </div>
             </div>
+          
             <div v-for="bootcamp in bootcamps" :key="bootcamp.id" class="card-joboffer">
                 <span>{{bootcamp.title}}</span>
                 <p>{{bootcamp.description}}</p>
@@ -26,7 +27,7 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            bootcamps:null
+            bootcamps:null,
         }
     },
     created() {
@@ -37,8 +38,9 @@ export default {
        async getBootcamp(){
            let getBootcamp = await axios.get('api/v1/JobOffer/')
            this.bootcamps = getBootcamp.data
-           console.log(data)
-        }
+        },
+
+        
     }
 
 }

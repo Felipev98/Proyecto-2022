@@ -2,9 +2,8 @@
   <div class="col-4 profile-feed">
       <div class="imagen-profile-feed"></div>
       <div class="foto-perfil">
-          <img src="../assets/daredevil.jpg" alt="">
-          <p>Matt Murdock</p>
-          <span>Front-End Developer</span>
+          <img :src="picture" alt="">
+          <p>{{ProfileB}}</p>
         <BotonesPerfil contenidoBoton="Mi perfil"/>
         <BotonesPerfil contenidoBoton="Mis aplicaciones"/>
         <BotonesPerfil contenidoBoton="Propuestas"/>
@@ -14,12 +13,30 @@
 </template>
 
 <script>
+import axios from 'axios'
 import BotonesPerfil from '../components/BotonesPerfil.vue'
 export default {
     name:'ProfileSection',
     components:{
         BotonesPerfil
     },
+    data() {
+        return {
+            ProfileB:null,
+            picture:null
+        }
+    },
+    created(){
+        this.getProfileB()
+    },
+    methods:{
+            async getProfileB(){
+           let getProfileB = await axios.get('api/v1/Profile/1/')
+           this.ProfileB = getProfileB.data.businessName
+           this.picture = getProfileB.data.profile_pic
+
+        },
+    }
 }
 </script>
 

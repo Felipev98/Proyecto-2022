@@ -19,7 +19,8 @@ import Feed from '../components/Feed.vue'
 export default {
     data() {
         return {
-            JobOffers:[]
+            JobOffers:[],
+            ProfileB:[]
         }
     },
     components:{
@@ -27,6 +28,7 @@ export default {
     },
     mounted() {
         this.getOffers();
+        this.getProfileB();
     },
     methods: {
      async getOffers(){
@@ -38,7 +40,17 @@ export default {
       }).catch(error =>{
         console.log(error)
       })
-     }
+     },
+      async getProfileB(){
+      await axios
+      .get('/api/v1/Profile/')
+      .then(response =>{
+        this.ProfileB = response.data
+        console.log(this.ProfileB)
+      }).catch(error =>{
+        console.log(error)
+      })
+     },
     },
 }
 </script>
