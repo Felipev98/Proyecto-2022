@@ -45,7 +45,7 @@ export default {
             }
             axios.post('/api/v1/users/',data)
             .then(response =>{
-                this.$router.push('/login')
+                this.$router.push('/login/')
                this.$store.commit('setBusiness',true)
             localStorage.setItem('Business','Business')
                 console.log(response)

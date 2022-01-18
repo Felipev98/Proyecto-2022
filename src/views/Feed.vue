@@ -3,7 +3,7 @@
 <div class="container">
 <div class="box-feed">
     <div class="row">
- <ProfileSection/>
+  <ProfileSection/>
  <Feed/>
     </div>
 </div>
@@ -26,31 +26,9 @@ export default {
     components:{
         ProfileSection,Feed
     },
-    mounted() {
-        this.getOffers();
-        this.getProfileB();
-    },
+
     methods: {
-     async getOffers(){
-      await axios
-      .get('/api/v1/JobOffer/')
-      .then(response =>{
-        this.JobOffers = response.data
-        console.log(this.JobOffers)
-      }).catch(error =>{
-        console.log(error)
-      })
-     },
-      async getProfileB(){
-      await axios
-      .get('/api/v1/Profile/')
-      .then(response =>{
-        this.ProfileB = response.data
-        console.log(this.ProfileB)
-      }).catch(error =>{
-        console.log(error)
-      })
-     },
+
     },
 }
 </script>

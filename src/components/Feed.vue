@@ -1,5 +1,5 @@
 <template>
-  <div class="col-4 job-feed">
+  <div class="col-6 job-feed">
         <div class="container">
             <div class="boton-bootcamp">
             <button>Agregar Bootcamp</button>
@@ -14,6 +14,10 @@
             </div>
           
             <div v-for="bootcamp in bootcamps" :key="bootcamp.id" class="card-joboffer">
+                    <div class="bootcamp-image">
+                        <img :src="bootcamp.logo" alt="">
+                        <span class="company-name">{{bootcamp.companyName}}</span>
+                </div>
                 <span>{{bootcamp.title}}</span>
                 <p>{{bootcamp.description}}</p>
                 <p>{{bootcamp.TechStack}}</p>
@@ -50,7 +54,8 @@ export default {
 .job-feed{
     background-color:#F7F6FB;
     height:90vh;
-    width: 28rem;
+    overflow: hidden;
+    overflow-y: auto;
 }
 .boton-bootcamp{
     text-align:center;
@@ -79,5 +84,13 @@ export default {
     height: auto;
     margin-top: 1rem;
     padding: 1rem;
+}
+.bootcamp-image img{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+span.company-name{
+    margin-left:1rem;
 }
 </style>

@@ -55,7 +55,7 @@ export default {
                 if(this.$store.state.Business){
                     this.$router.push('/empresa')
                 }else{
-                this.$router.push('/feed')
+                this.$router.push('/profileinfo')
                 }
             }).catch(error =>{
                 console.log(error)
