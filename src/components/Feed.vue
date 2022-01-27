@@ -63,9 +63,10 @@ export default {
     width:100%;
     padding: 1.1rem;
     margin-top: 2rem;
-    background-color: blue;
+    background-color: #101B67;
     border: none;
     color:#ffff;
+    border-radius: 1rem;
 }
 .filter-front{
     display: flex;

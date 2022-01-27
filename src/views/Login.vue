@@ -1,6 +1,5 @@
 <template>
 <section class="section-login">
-a
 <div class="container">
     <div class="row">
         <div class="col-12">

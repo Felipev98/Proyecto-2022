@@ -7,13 +7,15 @@
           <div class="logo">
               <img :src="profiles.profile_pic" alt="">
               {{profiles.businessName}}
-                <router-link  class="profile-detail-business" :to="{ path: 'profileinfo', params: { id: profiles.id }}">Ver Perfil</router-link>
+            <router-link  :to="{ name: 'ProfileInfo', params: { id: profiles.id }}"  >
+                <div class="profile-detail-business">Ver Perfil</div>
+            </router-link>
+        <router-link to="/agregarBusinessProfile"  >Bla bla</router-link>
           </div>
       </div>
+      
       </div>
-    
 </template>
-
 <script>
 import axios from 'axios'
 export default {
@@ -82,5 +84,7 @@ export default {
 }
 a{
     color: #ffff;
+    text-decoration: none;
 }
+
 </style>

@@ -6,15 +6,15 @@
             <div class="box-new">
                 <form class="input-agregar" @submit.prevent="newOffer">
                     <input type="text" v-model="companyName" placeholder="Nombre de su empresa">
-                    <input type="text" v-model="title" class="Título del Bootcamp" placeholder="Título Bootcamp">
-                    <input type="text" v-model="description" class="Título del Bootcamp" placeholder="Descripción del Bootcamp">
-                    <input type="radio" v-model="TechStack" value="Front-End" class="Título del Bootcamp"> Front-End
-                    <input type="radio" v-model="TechStack" value="Back-End" class="Título del Bootcamp"> Back-End
-                    <input type="radio" v-model="TechStack" value="FullStack" class="Título del Bootcamp"> FullStack
+                    <textarea type="text" v-model="BusinessBio" class="Título del Bootcamp" placeholder="Información empresa">
+                    </textarea>
+                    <input type="text" v-model="businessLink" class="Título del Bootcamp" placeholder="Link Contacto">
                      <label for="logo">Cargue Logo de su Bootcamp o Empresa</label>
-                    <input type="file" name="logo" aria-label="Logo" @change="uploadFile" ref="file" placeholder="Logo">
+                    <input type="file" name="logo" aria-label="Logo" @change="uploadFile" ref="file">
+                     <label for="logo">Banner para perfil</label>
+                    <input type="file" name="logo" aria-label="Logo" @change="uploadFilee" ref="file">
                          <div class="boton-login">
-                    <button type="submit" class="text-center">Agregar Bootcamp</button>
+                    <button type="submit" class="text-center">Cargar perfil empresa</button>
                 </div>
                 </form>
             </div>
@@ -40,7 +40,10 @@ export default {
         this.logo = this.$refs.file.files[0];
         console.log(this.logo)
       },
-      
+              uploadFilee() {
+        this.logo = this.$refs.file.files[0];
+        console.log(this.logo)
+      },
         newOffer(e){
                 const formData = new FormData();
                 formData.append('companyName', this.companyName);
@@ -54,7 +57,7 @@ export default {
             //     description:this.description,
             //     // Tech:this.Tech,
             // }
-            axios.post('api/v1/JobOffer/',formData)
+            axios.post('api/v1/Profile/',formData)
             .then(response =>{
             this.$router.push('/feed')
             }).catch(error =>{
