@@ -2,7 +2,7 @@
   <div class="col-6 job-feed">
         <div class="container">
             <div class="boton-bootcamp">
-            <button>Agregar Bootcamp</button>
+           <router-link to="agregarJobOffer"><button>Agregar Bootcamp</button></router-link> 
             </div>
             <div class="filter-front">
                 <div class="front">
@@ -11,8 +11,7 @@
                 <div class="back">
                     <span>Back-End</span>
                 </div>
-            </div>
-          
+            </div>         
             <div v-for="bootcamp in bootcamps" :key="bootcamp.id" class="card-joboffer">
                     <div class="bootcamp-image">
                         <img :src="bootcamp.logo" alt="">
