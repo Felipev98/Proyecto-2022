@@ -3,7 +3,10 @@
 <div class="container">
 <div class="box-feed">
     <div class="row">
+<div v-if="$store.state.Business">
   <ProfileSection/>
+</div>
+<DevProfile/>
  <Feed/>
     </div>
 </div>
@@ -13,7 +16,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import DevProfile from '../components/DevProfileSection.vue'
 import ProfileSection from '../components/ProfileSection.vue'
 import Feed from '../components/Feed.vue'
 export default {
@@ -24,7 +27,7 @@ export default {
         }
     },
     components:{
-        ProfileSection,Feed
+        ProfileSection,Feed,DevProfile
     },
 
     methods: {

@@ -2,7 +2,11 @@
   <div class="col-6 job-feed">
         <div class="container">
             <div class="boton-bootcamp">
+            <template v-if="$store.state.Business">
+            <b-nav-item>
            <router-link to="agregarJobOffer"><button>Agregar Bootcamp</button></router-link> 
+            </b-nav-item>
+          </template>
             </div>
             <div class="filter-front">
                 <div class="front">

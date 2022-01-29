@@ -52,11 +52,7 @@ export default {
                 localStorage.setItem('access',access)
                 localStorage.setItem('refresh',refresh)
                 console.log(access)
-                if(this.$store.state.Business){
-                    this.$router.push('/empresa')
-                }else{
-                this.$router.push('/profileinfo')
-                }
+                this.$router.push('/feed')
             }).catch(error =>{
                 console.log(error)
             })

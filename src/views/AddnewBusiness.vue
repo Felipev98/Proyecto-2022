@@ -4,15 +4,15 @@
     <div class="row">
         <div class="col-12">
             <div class="box-new">
-                <form class="input-agregar" @submit.prevent="newOffer">
-                    <input type="text" v-model="companyName" placeholder="Nombre de su empresa">
+                <form class="input-agregar" @submit.prevent="newBusiness">
+                    <input type="text" v-model="businessName" placeholder="Nombre de su empresa">
                     <textarea type="text" v-model="BusinessBio" class="Título del Bootcamp" placeholder="Información empresa">
                     </textarea>
                     <input type="text" v-model="businessLink" class="Título del Bootcamp" placeholder="Link Contacto">
                      <label for="logo">Cargue Logo de su Bootcamp o Empresa</label>
-                    <input type="file" name="logo" aria-label="Logo" @change="uploadFile" ref="file">
+                    <input type="file" name="profile_pic" aria-label="profile_pic" @change="uploadFile" ref="file">
                      <label for="logo">Banner para perfil</label>
-                    <input type="file" name="logo" aria-label="Logo" @change="uploadFilee" ref="file">
+                    <input type="file" name="banner_pic" aria-label="Logo" @change="uploadFilee" ref="files">
                          <div class="boton-login">
                     <button type="submit" class="text-center">Cargar perfil empresa</button>
                 </div>
@@ -28,29 +28,29 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            logo:'',
-            companyName:'',
-            title:'',
-            description:'',
-            TechStack:''
+            profile_pic:'',
+            businessName:'',
+            businessLink:'',
+            BusinessBio:'',
+            banner_pic:''
         }
     },
      methods:{
         uploadFile() {
-        this.logo = this.$refs.file.files[0];
-        console.log(this.logo)
+        this.profile_pic = this.$refs.file.files[0];
+        console.log(this.profile_pic)
       },
               uploadFilee() {
-        this.logo = this.$refs.file.files[0];
-        console.log(this.logo)
+        this.banner_pic = this.$refs.files.files[0];
+        console.log(this.banner_pic)
       },
-        newOffer(e){
+        newBusiness(e){
                 const formData = new FormData();
-                formData.append('companyName', this.companyName);
-                formData.append('title', this.title);
-                formData.append('description', this.description);
-                formData.append('logo', this.logo);
-                formData.append('TechStack', this.TechStack);
+                formData.append('businessName', this.businessName);
+                formData.append('BusinessBio', this.BusinessBio);
+                formData.append('businessLink', this.businessLink);
+                formData.append('profile_pic', this.profile_pic);
+                formData.append('banner_pic', this.banner_pic);
             // const data ={
             //     companyName:this.companyName,
             //     title:this.title,
@@ -88,6 +88,12 @@ height:100vh;
     padding: 1rem;
     outline: none;
     border: none;
+}
+.input-agregar textarea{
+    margin-top: 1rem;
+    border: none;
+    outline: none;
+    height: 6rem;
 }
 .boton-login{
     text-align: center;
