@@ -5,12 +5,12 @@
           <h2>{{titulo}}</h2>
       </div>
       <div class="row">
-          <div class="col-6">
+          <div class="col-xl-6">
               <div class="imagen">
                   <img :src="require(`@/assets/${image}`)"> 
               </div>
           </div>
-          <div class="col-6" id="columna-texto">
+          <div class="col-xl-6" id="columna-texto">
               <div class="texto-nosotros">
                   <p>{{texto}}</p>
               </div>

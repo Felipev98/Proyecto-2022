@@ -5,7 +5,7 @@
                     <h2>{{titulo}}</h2>
                 </div>
                 <div class="row">
-            <div class="col-12" id="empresas-columnass">
+            <div class="col-xl-12" id="empresas-columnass">
                <div v-for="empresass in empresas" :key="empresass.id">
                    <img class="imagen-" :src="require(`../assets/${empresass.imagen}`) ">
                    <h2 class="titulo-empresas text-center">{{empresass.nombre}}</h2>
@@ -60,5 +60,21 @@ p.titulo-empresas{
 #empresas-columnass{
     display: flex;
     justify-content: space-between;
+}
+@media screen and (max-width:700px){
+    #empresas-columnass{
+        flex-wrap: wrap;
+        justify-content: center;
+}
+.texto-nosotros p{
+    text-align: center;
+}
+.texto p{
+    width: 100%;
+
+}
+.boton-hero{
+    width: 50%;
+}
 }
 </style>
