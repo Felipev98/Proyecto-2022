@@ -6,13 +6,16 @@ export default createStore({
     refresh:'',
     Developer: false,
     Business:false,
+    isAuthenticated : false,
   },
   mutations: {
     initializeStore(state){
       if(localStorage.getItem('access')){
         state.access = localStorage.getItem('access')
+        state.isAuthenticated = true
       }else{
         state.access = ''
+        state.isAuthenticated = false
       }
     },
     initializeState(state){
@@ -27,6 +30,7 @@ export default createStore({
     },
     setAcess(state, access){
       state.access = access
+      state.isAuthenticated = true
     },
     setRefresh(state,refresh){
       state.refresh = refresh

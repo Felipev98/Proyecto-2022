@@ -3,11 +3,15 @@
 <div class="container">
 <div class="box-feed">
     <div class="row">
-<div v-if="$store.state.Business">
-  <ProfileSection/>
-</div>
-<DevProfile/>
+    <template v-if="$store.state.Business">
+            <DevProfile/>
+    </template>
+    <template v-else>
+          <ProfileSection/>
+    </template>
  <Feed/>
+<!-- <div v-else>
+</div> -->
     </div>
 </div>
 </div>

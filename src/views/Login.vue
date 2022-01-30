@@ -18,7 +18,7 @@
                     <router-link class="links-registro" to="/profileinfo/business">Perfil Empresa</router-link>
                 </div>
                 <div class="registro-texto">
-                    <p>¿Aún no tienes cuenta? Registrate como <router-link class="links-registro" to="/">Desarrollador</router-link> o <router-link class="links-registro" to="/">Empresa</router-link></p>
+                    <p>¿Aún no tienes cuenta? Registrate como <router-link class="links-registro" to="/signUpDeveloper">Desarrollador</router-link> o <router-link class="links-registro" to="/signupEmpresa">Empresa</router-link></p>
                 </div>
             </div>
         </div>
@@ -46,11 +46,11 @@ export default {
             .then(response =>{
                 const access = response.data.access
                 const refresh = response.data.refresh
-                this.$store.commit('setAccess',access)
-                this.$store.commit('setRefresh',refresh)
+                this.$store.commit('setAcess',access)
+                // this.$store.commit('setRefresh',refresh)
                 axios.defaults.headers.common['Authorization'] = 'JWT' + access
                 localStorage.setItem('access',access)
-                localStorage.setItem('refresh',refresh)
+                // localStorage.setItem('refresh',refresh)
                 console.log(access)
                 this.$router.push('/feed')
             }).catch(error =>{
