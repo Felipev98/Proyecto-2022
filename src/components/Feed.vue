@@ -10,13 +10,20 @@
             </div>
             <div class="filter-front">
                 <div class="front">
-                    <span>Front-End</span>
+                <input type="radio" v-model="filter" value="Front-end">
+                <span class="tech-text">Front-End</span>
                 </div>
+              
                 <div class="back">
-                    <span>Back-End</span>
+                <input type="radio" v-model="filter" value="Back-end">
+                <span class="tech-text">Back-End</span>
+                </div>
+                 <div class="back">
+                <input type="radio" v-model="filter" value="Todos">
+                <span class="tech-text">Todos</span>
                 </div>
             </div>         
-            <div v-for="bootcamp in bootcamps" :key="bootcamp.id" class="card-joboffer">
+            <div v-for="bootcamp in filteredPeople" :key="bootcamp.id" class="card-joboffer">
                     <div class="bootcamp-image">
                         <img :src="bootcamp.logo" alt="">
                         <span class="company-name">{{bootcamp.companyName}}</span>
@@ -34,7 +41,8 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            bootcamps:null,
+            bootcamps:[],
+            filter:'Todos',
         }
     },
     created() {
@@ -45,10 +53,22 @@ export default {
        async getBootcamp(){
            let getBootcamp = await axios.get('api/v1/JobOffer/')
            this.bootcamps = getBootcamp.data
-        },
-
-        
-    }
+        }, 
+    },
+    	computed: {
+		filteredPeople: function() {
+			var vm = this;
+			var stack = vm.filter;
+			
+			if(stack === "Todos") {
+				return this.bootcamps;
+			} else {
+                    return vm.bootcamps.filter(function(bootcamp) {
+					return bootcamp.TechStack === stack;
+				});
+			}
+		}
+	}
 
 }
 </script>
@@ -80,7 +100,9 @@ export default {
     padding: 1.1rem;
     border-radius: 1.1rem;
 }
-
+.tech-text {
+    margin-left: 0.5rem;
+}
 /* Estilos para componente */
 .card-joboffer{
     background-color: #ffff;
