@@ -1,6 +1,9 @@
 <template>
   <div class="col-6 job-feed">
         <div class="container">
+                <div class="logout-button">
+                    <button @click="logout">Cerrar Sesión</button>
+                </div>
             <div class="boton-bootcamp">
             <template v-if="$store.state.Business">
             <b-nav-item>
@@ -8,6 +11,7 @@
             </b-nav-item>
           </template>
             </div>
+
             <div class="filter-front">
                 <div class="front">
                 <input type="radio" v-model="filter" value="Front-end">
@@ -22,7 +26,11 @@
                 <input type="radio" v-model="filter" value="Todos">
                 <span class="tech-text">Todos</span>
                 </div>
-            </div>         
+            </div>
+<div class="text-center">
+<div class="spinner-border text-success" v-if="$store.state.isLoading" role="status">
+</div>
+</div>         
             <div v-for="bootcamp in filteredPeople" :key="bootcamp.id" class="card-joboffer">
                     <div class="bootcamp-image">
                         <img :src="bootcamp.logo" alt="">
@@ -51,9 +59,22 @@ export default {
     },
     methods:{
        async getBootcamp(){
+           try{
            let getBootcamp = await axios.get('api/v1/JobOffer/')
            this.bootcamps = getBootcamp.data
+           }catch(error){
+               console.log(error)
+           }
+        this.$store.commit('setIsLoading',false)
         }, 
+         logout() {
+            axios.defaults.headers.common["Authorization"] = ""
+            localStorage.removeItem("access")
+            localStorage.removeItem("username")
+            localStorage.removeItem("userid")
+            this.$store.commit('removeAccess')
+            this.$router.push('/')
+        },
     },
     	computed: {
 		filteredPeople: function() {
@@ -118,5 +139,17 @@ export default {
 }
 span.company-name{
     margin-left:1rem;
+}
+.logout-button{
+    text-align: right;
+    margin-top: 1rem;
+}
+.logout-button button{
+    padding: 0.8rem;
+    width: 30%;
+    border: none;
+    background: #FF1E72;
+    border-radius: 1rem;
+    color: #ffff;
 }
 </style>

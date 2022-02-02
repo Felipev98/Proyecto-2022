@@ -4,6 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="box-new">
+                <h2 class="text-center">Cargar Nuevo Perfil Empresa</h2>
                 <form class="input-agregar" @submit.prevent="newBusiness">
                     <input type="text" v-model="businessName" placeholder="Nombre de su empresa">
                     <textarea type="text" v-model="BusinessBio" class="Título del Bootcamp" placeholder="Información empresa">
@@ -105,5 +106,10 @@ height:100vh;
     padding: 1rem;
     border: none;
     border-radius: 1rem;
+}
+@media screen and (max-width:700px){
+    .boton-login button{
+        width: 60%;
+    }
 }
 </style>

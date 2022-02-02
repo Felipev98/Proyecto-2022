@@ -57,7 +57,10 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/agregarJobOffer.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/agregarJobOffer.vue'),
+    meta: {
+      requireLogin: true
+  } 
   },
   {
     path: '/profileinfo/:id',
@@ -65,7 +68,10 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/ProfileInfo.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/ProfileInfo.vue'),
+    meta: {
+      requireLogin: true
+  } 
   },
   {
     path: '/devprofile/:id',
@@ -81,7 +87,10 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AddnewBusiness.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/AddnewBusiness.vue'),
+    meta: {
+      requireLogin: true
+  } 
   },
   {
     path: '/signUpDeveloper',

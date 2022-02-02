@@ -1,8 +1,14 @@
 <template>
   <div class="col-6 profile-feed">
       <div class="titulo-feed text-center">
-          <h2>EMPRESAS DISPONIBLES</h2>
+          <h2>EMPRESAS DISPONIBLES</h2>        
       </div>
+          <div class="spinner-border text-success" v-if="$store.state.isLoading" role="status">
+    </div>
+      <div class="text-center">
+<div class="spinner-border text-success" v-if="$store.state.isLoading" role="status">
+</div>
+</div>  
       <div class="box-feed-business" v-for="profiles in BusinessProfiles" :key="profiles.id">
           <div class="logo">
               <img :src="profiles.profile_pic" alt="">
@@ -10,7 +16,6 @@
             <router-link  :to="{ name: 'ProfileInfo', params: { id: profiles.id }}"  >
                 <div class="profile-detail-business">Ver Perfil</div>
             </router-link>
-        <router-link to="/agregarBusinessProfile"  >Bla bla</router-link>
           </div>
       </div>
       
@@ -32,8 +37,12 @@ export default {
     },
     methods:{
         async getBusinessProfiles(){
-           let BusinessProfiles = await axios.get('api/v1/Profile/')
-           this.BusinessProfiles = BusinessProfiles.data
+        try {
+        let BusinessProfiles = await axios.get('api/v1/Profile/')
+        this.BusinessProfiles = BusinessProfiles.data
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 }

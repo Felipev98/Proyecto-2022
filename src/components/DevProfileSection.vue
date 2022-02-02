@@ -1,8 +1,14 @@
 <template>
   <div class="col-6 profile-feed">
       <div class="titulo-feed text-center">
+          <router-link to="/agregarBusinessProfile"  ><i class="fas fa-plus"></i></router-link>
+      
           <h2>Desarrolladores disponibles</h2>
       </div>
+        <div class="text-center">
+    <div class="spinner-border text-success" v-if="$store.state.isLoading" role="status">
+    </div>
+    </div>   
       <div class="box-feed-business" v-for="profiles in DevProfiles" :key="profiles.id">
           <div class="logo">
               <img :src="profiles.profile_pic" alt="">
@@ -10,7 +16,6 @@
             <router-link  :to="{ name: 'DevProfile', params: { id: profiles.id }}"  >
                 <div class="profile-detail-business">Ver Perfil</div>
             </router-link>
-        <router-link to="/agregarBusinessProfile"  >Bla bla</router-link>
           </div>
       </div>
       
@@ -86,5 +91,9 @@ a{
     color: #ffff;
     text-decoration: none;
 }
-
+.fas.fa-plus{
+    padding: 1rem;
+    background: #FF1E72;
+    border-radius: 50%;
+}
 </style>

@@ -7,6 +7,7 @@ export default createStore({
     Developer: false,
     Business:false,
     isAuthenticated : false,
+    isLoading: true,
   },
   mutations: {
     initializeStore(state){
@@ -40,7 +41,14 @@ export default createStore({
     },
     setBusiness(state, Business){
       state.Business = Business
-    }
+    },
+    setIsLoading(state, status) {
+      state.isLoading = status
+    },
+    removeAccess(state) {
+      state.access = ''
+      state.isAuthenticated = false
+  },
   },
   actions: {
   },

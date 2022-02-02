@@ -98,5 +98,9 @@ height:100vh;
   text-align: center;
   font-size: 2rem;
 }
-
+@media screen and (max-width:700px){
+  .box-profile{
+    width: 100%;
+  }
+}
 </style>
