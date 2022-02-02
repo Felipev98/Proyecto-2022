@@ -35,7 +35,6 @@ export default {
             username:'',
         }
     },
-
     methods:{
         submitForm(e){
             const data ={
@@ -45,14 +44,21 @@ export default {
             }
             axios.post('/api/v1/users/',data)
             .then(response =>{
-                this.$router.push('/login/')
-               this.$store.commit('setBusiness',true)
+            this.$router.push('/login/')
+            this.$store.commit('setBusiness',true)
             localStorage.setItem('Business','Business')
-                console.log(response)
-
+            this.$swal({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            icon: 'success',
+            text: 'Cuenta creada, por favor ingresa',
+            });
             }).catch(error =>{
                 console.log(error)
             })
+            this.$store.commit('setIsLoading',false)
         },
     }
 }

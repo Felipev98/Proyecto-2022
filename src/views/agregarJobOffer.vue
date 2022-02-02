@@ -10,7 +10,6 @@
                     <input type="text" v-model="description" class="Título del Bootcamp" placeholder="Descripción del Bootcamp">
                     <input type="radio" v-model="TechStack" value="Front-End" class="Título del Bootcamp"> Front-End
                     <input type="radio" v-model="TechStack" value="Back-End" class="Título del Bootcamp"> Back-End
-                    <input type="radio" v-model="TechStack" value="FullStack" class="Título del Bootcamp"> FullStack
                      <label for="logo">Cargue Logo de su Bootcamp o Empresa</label>
                     <input type="file" name="logo" aria-label="Logo" @change="uploadFile" ref="file" placeholder="Logo">
                          <div class="boton-login">
@@ -96,5 +95,10 @@ height:100vh;
     padding: 1rem;
     border: none;
     border-radius: 1rem;
+}
+@media screen and (max-width:700px){
+    .boton-login button{
+        width: 100%;
+    }
 }
 </style>

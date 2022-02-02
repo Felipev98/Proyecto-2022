@@ -152,4 +152,15 @@ span.company-name{
     border-radius: 1rem;
     color: #ffff;
 }
+@media screen and (max-width:700px){
+    .profile-feed{
+        display:none;
+}
+.job-feed{
+    width: 100%;
+}
+.logout-button button{
+    width: 100%;
+}
+}
 </style>
