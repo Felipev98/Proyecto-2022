@@ -46,6 +46,7 @@
 
 <script>
 import axios from 'axios'
+import EventService from '../helpers/EventService'
 export default {
     data() {
         return {
@@ -60,7 +61,7 @@ export default {
     methods:{
        async getBootcamp(){
            try{
-           let getBootcamp = await axios.get('api/v1/JobOffer/')
+           let getBootcamp = await EventService.getProposals()
            this.bootcamps = getBootcamp.data
            }catch(error){
                console.log(error)

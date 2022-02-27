@@ -22,7 +22,7 @@
       </div>
 </template>
 <script>
-import axios from 'axios'
+import EventService from '../helpers/EventService'
 export default {
     name:'ProfileSection',
     components:{
@@ -33,11 +33,11 @@ export default {
         }
     },
     created(){
-        this.getBusinessProfiles()
+        this.getDevProfiles()
     },
     methods:{
-        async getBusinessProfiles(){
-           let DevProfiles = await axios.get('api/v1/DevProfile/')
+        async getDevProfiles(){
+           let DevProfiles = await EventService.getDevProfiles();
            this.DevProfiles = DevProfiles.data
     }
 }

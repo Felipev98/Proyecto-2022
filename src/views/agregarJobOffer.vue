@@ -38,8 +38,7 @@ export default {
         uploadFile() {
         this.logo = this.$refs.file.files[0];
         console.log(this.logo)
-      },
-      
+      },      
         newOffer(e){
                 const formData = new FormData();
                 formData.append('companyName', this.companyName);
@@ -47,12 +46,6 @@ export default {
                 formData.append('description', this.description);
                 formData.append('logo', this.logo);
                 formData.append('TechStack', this.TechStack);
-            // const data ={
-            //     companyName:this.companyName,
-            //     title:this.title,
-            //     description:this.description,
-            //     // Tech:this.Tech,
-            // }
             axios.post('api/v1/JobOffer/',formData)
             .then(response =>{
             this.$router.push('/feed')

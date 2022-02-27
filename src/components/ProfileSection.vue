@@ -21,7 +21,7 @@
       </div>
 </template>
 <script>
-import axios from 'axios'
+import EventService from '../helpers/EventService'
 export default {
     name:'ProfileSection',
     components:{
@@ -37,7 +37,7 @@ export default {
     methods:{
         async getBusinessProfiles(){
         try {
-        let BusinessProfiles = await axios.get('api/v1/Profile/')
+        let BusinessProfiles = await EventService.getBusinessProfiles()
         this.BusinessProfiles = BusinessProfiles.data
         } catch (error) {
             console.log(error)

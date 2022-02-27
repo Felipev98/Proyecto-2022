@@ -10,8 +10,6 @@
           <ProfileSection/>
     </template>
  <Feed/>
-<!-- <div v-else>
-</div> -->
     </div>
 </div>
 </div>
