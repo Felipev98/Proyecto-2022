@@ -3,28 +3,20 @@
       <div class="titulo-feed text-center">
           <h2>EMPRESAS DISPONIBLES</h2>        
       </div>
-          <div class="spinner-border text-success" v-if="$store.state.isLoading" role="status">
-    </div>
       <div class="text-center">
 <div class="spinner-border text-success" v-if="$store.state.isLoading" role="status">
 </div>
 </div>  
-      <div class="box-feed-business" v-for="profiles in BusinessProfiles" :key="profiles.id">
-          <div class="logo">
-              <img :src="profiles.profile_pic" alt="">
-              {{profiles.businessName}}
-            <router-link  :to="{ name: 'ProfileInfo', params: { id: profiles.id }}"  >
-                <div class="profile-detail-business">Ver Perfil</div>
-            </router-link>
-          </div>
-      </div>
+     <ProfileCard v-for="profiles in BusinessProfiles" :key="profiles.id"  :profiles="profiles"/>
       </div>
 </template>
 <script>
 import EventService from '../helpers/EventService'
+import ProfileCard from '../components/ProfileCard'
 export default {
     name:'ProfileSection',
     components:{
+        ProfileCard
     },
     data() {
         return {

@@ -30,16 +30,10 @@
 <div class="text-center">
 <div class="spinner-border text-success" v-if="$store.state.isLoading" role="status">
 </div>
+</div>
+<div >
+  <BootcampCard v-for="bootcamp in filteredPeople" :key="bootcamp.id" :bootcamp="bootcamp" />
 </div>         
-            <div v-for="bootcamp in filteredPeople" :key="bootcamp.id" class="card-joboffer">
-                    <div class="bootcamp-image">
-                        <img :src="bootcamp.logo" alt="">
-                        <span class="company-name">{{bootcamp.companyName}}</span>
-                </div>
-                <span>{{bootcamp.title}}</span>
-                <p>{{bootcamp.description}}</p>
-                <p>{{bootcamp.TechStack}}</p>
-            </div>
         </div>
       </div>
 </template>
@@ -47,7 +41,12 @@
 <script>
 import axios from 'axios'
 import EventService from '../helpers/EventService'
+import BootcampCard from '../components/BootcampCard'
 export default {
+    name:'Feed',
+    components:{
+        BootcampCard
+    },
     data() {
         return {
             bootcamps:[],
@@ -59,6 +58,7 @@ export default {
         
     },
     methods:{
+
        async getBootcamp(){
            try{
            let getBootcamp = await EventService.getProposals()

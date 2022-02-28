@@ -9,16 +9,7 @@
     <div class="spinner-border text-success" v-if="$store.state.isLoading" role="status">
     </div>
     </div>   
-      <div class="box-feed-business" v-for="profiles in DevProfiles" :key="profiles.id">
-          <div class="logo">
-              <img :src="profiles.profile_pic" alt="">
-              {{profiles.DevName}}
-            <router-link  :to="{ name: 'DevProfile', params: { id: profiles.id }}"  >
-                <div class="profile-detail-business">Ver Perfil</div>
-            </router-link>
-          </div>
-      </div>
-      
+     <ProfileCard  v-for="profiles in DevProfiles" :key="profiles.id"  :profiles="profiles" />
       </div>
 </template>
 <script>
